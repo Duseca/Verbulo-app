@@ -53,7 +53,7 @@ class MyButton extends StatelessWidget {
     this.width = double.infinity,
     this.outlineColor = Colors.black,
     this.fontSize = 16,
-    this.fontWeight = FontWeight.w700,
+    this.fontWeight = FontWeight.w400,
     this.borderRadius = 6,
   }) : backgroundColor = getbtnColor(Get.context!),
        gradient = null,
@@ -84,7 +84,7 @@ class MyButton extends StatelessWidget {
     this.width = double.infinity,
     this.outlineColor = Colors.transparent,
     this.fontSize = 16,
-    this.fontWeight = FontWeight.w700,
+    this.fontWeight = FontWeight.w400,
     this.borderRadius = 6,
   }) : backgroundColor = null,
        svgPath = null,
@@ -114,7 +114,7 @@ class MyButton extends StatelessWidget {
     this.width = double.infinity,
     this.outlineColor = Colors.transparent,
     this.fontSize = 16,
-    this.fontWeight = FontWeight.w700,
+    this.fontWeight = FontWeight.w400,
     this.borderRadius = 6,
   }) : gradient = null,
        svgPath = null,
@@ -146,7 +146,7 @@ class MyButton extends StatelessWidget {
     this.width = double.infinity,
     this.outlineColor = Colors.transparent,
     this.fontSize = 16,
-    this.fontWeight = FontWeight.w700,
+    this.fontWeight = FontWeight.w400,
     this.borderRadius = 6,
     this.iconSize = 20,
     this.isRightIcon = false, // 👈 new flag added
@@ -271,10 +271,10 @@ class MyButton extends StatelessWidget {
       case ButtonType.outline:
         return fontColor ?? outlineColor;
       case ButtonType.gradient:
-        return fontColor ?? getappbgcolor(Get.context!);
+        return fontColor ?? getPrimaryColor(Get.context!);
       case ButtonType.filled:
       case ButtonType.icon:
-        return fontColor ?? getappbgcolor(Get.context!);
+        return fontColor ?? getPrimaryColor(Get.context!);
         ;
     }
   }

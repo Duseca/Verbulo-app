@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:verbulo/generated/assets.dart';
 
 class OnboardingController extends GetxController {
+  static OnboardingController get instance => Get.find<OnboardingController>();
   var currentIndex = 0.obs;
 
   final List<Map<String, dynamic>> onboardingData = [

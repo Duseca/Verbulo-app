@@ -4,8 +4,8 @@ import 'package:verbulo/view/widgets/my_text_widget.dart';
 
 // ignore: must_be_immutable
 class MyBullet extends StatelessWidget {
-  MyBullet({super.key, required this.point, this.size, this.color});
-  String point;
+  MyBullet({super.key, this.point, this.size, this.color, this.bullet});
+  String? point, bullet;
   Color? color;
   double? size;
   @override
@@ -16,16 +16,17 @@ class MyBullet extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MyText(
-            text: '•',
-            color: color ?? kGreyColor2,
+            text: bullet ?? '•',
+            color: color ?? getTertiary(context),
+            size: 16,
             //paddingLeft: 25,
             paddingRight: 5,
           ),
           Expanded(
             child: MyText(
-              text: point,
-              color: color ?? kBlack3Color,
-              size: size ?? 12,
+              text: point ?? '',
+              color: color ?? getTertiary(context),
+              size: size ?? 16,
             ),
           ),
           //  SizedBox(width: 10),

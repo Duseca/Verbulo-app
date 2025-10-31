@@ -28,16 +28,18 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StackBg(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Center(child: MovingIcon(path: Assets.imagesLogo, height: 115)),
-          ],
+    return Stack(
+      children: [StackBg(),
+        Scaffold(
+          body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Center(child: MovingIcon(path: Assets.imagesLogo, height: 115)),
+              ],
+            ),
         ),
-      ),
+      ],
     );
   }
 }

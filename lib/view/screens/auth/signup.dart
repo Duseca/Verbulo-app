@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:get/instance_manager.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:verbulo/const/app_colors.dart';
 import 'package:verbulo/const/app_styling.dart';
 import 'package:verbulo/generated/assets.dart';
-import 'package:verbulo/view/screens/auth/signup.dart';
+import 'package:verbulo/view/screens/auth/login.dart';
+import 'package:verbulo/view/screens/auth/verification.dart';
 import 'package:verbulo/view/widgets/common_image_view_widget.dart';
 import 'package:verbulo/view/widgets/custom_check_box.dart';
 import 'package:verbulo/view/widgets/custom_rich_text.dart';
 import 'package:verbulo/view/widgets/my_button.dart';
 import 'package:verbulo/view/widgets/my_text_field.dart';
-import 'package:verbulo/view/widgets/my_text_widget.dart';
 import 'package:verbulo/view/widgets/or_divider.dart';
 import 'package:verbulo/view/widgets/stack_bg.dart';
 import 'package:verbulo/view/widgets/two_text_column.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class SignUp extends StatelessWidget {
+  const SignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +47,8 @@ class Login extends StatelessWidget {
                     ),
                     SizedBox(height: 30),
                     TwoTextedColumn(
-                      text1: 'Login',
-                      text2: 'Login to your account',
+                      text1: 'Sign up',
+                      text2: 'Create your account',
                     ),
                     SizedBox(height: 30),
                     MyTextField(
@@ -59,33 +59,44 @@ class Login extends StatelessWidget {
                     ),
                     MyTextField(
                       marginBottom: 5,
-                      label: 'PASSWORD',  hasBottomRadius: T,
+                      label: 'PASSWORD',
                       hint: 'Enter Password',
-                      suffixIcon: Image.asset(
-                        color: getTertiary(context),
-                        Assets.imagesSee,height: 12,),
+                      suffixIcon:Image.asset(
+                        color: getTertiary(context), Assets.imagesSee,height: 12,),
                     ),
-                   SizedBox(height: 10,),
+                    MyTextField(
+                      hasBottomRadius: T,
+                      marginBottom: 5,
+                      label: 'RE-ENTER PASSWORD',
+                      hint: 'Enter Password', suffixIcon:Image.asset(
+                        color: getTertiary(context), Assets.imagesSee,height: 12,),
+                    ),
                     Row(
                       spacing: 10,
                       children: [
                         CustomCheckBox(isActive: false, onTap: () {}),
-                     MyText(text: 'Remember me'),
-                     Spacer(), MyText(text: 'Forget Password?')
+                        PriceText(
+                          color: getTertiary(context),
+                          color2: getTertiary(context),
+                          info: 'i agree to the ',
+                          size1: 12,
+                          size2: 12,
+                          title: 'Terms & Conditions',
+                        ),
 
                         //  Spacer(),
                       ],
                     ),
                     MyButton.filled(
-                      onTap: () {},
-                      buttonText: 'Sign In',
+                      onTap: () {Get.to(()=>Verification());},
+                      buttonText: 'Sign Up',
                       mTop: 40,
                       mBottom: 40,
                     ),
                     OrDivider(),
                     SizedBox(height: 30),
                     Row(
-                      spacing: 40,
+                      spacing:40,
                       children: [
                         Expanded(
                           child: Container(
@@ -131,9 +142,11 @@ class Login extends StatelessWidget {
                 ),
               ),
               CustomRichText(
-                info: "Don't have an account?",
-                title: ' Sign Up',
-                ontaptext: ()=>Get.to(()=>SignUp()),
+                info: 'Already have an account?',
+                title: ' Log in',
+                ontaptext: (){
+                  Get.to(()=>Login());
+                },
               ),
               SizedBox(height: 30),
             ],

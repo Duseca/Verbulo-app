@@ -24,28 +24,28 @@ class _MyPinCodeState extends State<MyPinCode> {
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
-      width: 72,
+      width: 58,
       height: 72,
-      margin: EdgeInsets.all(5),
+      margin: EdgeInsets.all(15),
       padding: EdgeInsets.all(0),
       textStyle: TextStyle(
-        fontSize: 20,
-        color: widget.color ?? kSecondaryBlue,
-        fontWeight: FontWeight.w700,
+        fontSize: 34,
+        color: widget.color ?? getTertiary(context),
+        fontWeight: FontWeight.w500,
         fontFamily: MANROPE,
       ),
       decoration: BoxDecoration(
-        color: kQuaternaryColor,
+        color: ktransparent,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: kSecondary2, width: 1.5),
+        border: Border.all(color: getsubtextcolor(context).withOpacity(0.3), width: 1),
       ),
     );
 
     final focusedPinTheme = defaultPinTheme.copyWith(
       decoration: BoxDecoration(
-        color: kQuaternaryColor,
+        color: ktransparent,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: kSecondaryBlue, width: 1.5),
+        border: Border.all(color: getTertiary(context), width: 1),
       ),
     );
 
@@ -57,7 +57,7 @@ class _MyPinCodeState extends State<MyPinCode> {
       submittedPinTheme: defaultPinTheme.copyWith(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: kSecondaryBlue, width: 1),
+          border: Border.all(color: getTertiary(context), width: 1),
         ),
       ),
       onChanged: widget.onChanged,

@@ -50,7 +50,7 @@ class Menutile extends StatelessWidget {
                 spacing: 6,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  MyText(text: trailtext ?? '', color: kGreyColor),
+                  MyText(text: trailtext ?? '', color: kGreyColor, size: 12),
                   Image.asset(
                     color: iconcolor ?? null,
                     trailIcon ?? Assets.imagesLogo,

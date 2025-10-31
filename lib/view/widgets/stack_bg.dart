@@ -15,7 +15,7 @@ class StackBg extends StatelessWidget {
           child: body,
           width: Get.width,
           height: Get.height,
-          color: getappbgcolor(context),
+          color: getPrimaryColor(context),
         ),
         Positioned(
           left: -53,

@@ -3,7 +3,7 @@ import 'package:verbulo/const/app_colors.dart';
 import 'package:verbulo/const/app_fonts.dart';
 
 final ThemeData lightTheme = ThemeData(
-  scaffoldBackgroundColor: Color(0xffffffff),
+  scaffoldBackgroundColor: ktransparent,
   fontFamily: MANROPE,
   appBarTheme: AppBarTheme(elevation: 0, backgroundColor: kQuaternaryColor),
   splashColor: kQuaternaryColor.withOpacity(0.10),
@@ -14,7 +14,7 @@ final ThemeData lightTheme = ThemeData(
     tertiary: Colors.black,
 
     onSecondary: Color(0xff4D4D4D),
-    onTertiary: kGrey1Color,
+    onTertiary: kSecondaryColor,
     onPrimaryFixed: Color(0xffDEDEDE),
     onPrimary: Colors.black,
   ),
@@ -22,7 +22,7 @@ final ThemeData lightTheme = ThemeData(
 );
 
 final ThemeData darkTheme = ThemeData(
-  scaffoldBackgroundColor: kSecondaryColor,
+  scaffoldBackgroundColor: ktransparent,
   brightness: Brightness.dark,
   fontFamily: MANROPE,
   appBarTheme: AppBarTheme(elevation: 0, backgroundColor: Color(0xff0b0b0b)),
@@ -30,10 +30,10 @@ final ThemeData darkTheme = ThemeData(
   splashColor: Color(0xff000000),
   highlightColor: Color(0xff0b0b0b).withOpacity(0.10),
   colorScheme: ColorScheme.dark().copyWith(
-    primary: Color(0xff0b0b0b),
+    primary: kSecondaryColor,
     tertiary: Colors.white,
     secondary: Color(0xffF8F9FA),
-    onTertiary: Colors.white,
+    onTertiary: Color(0xff405161),
     onPrimary: Color(0xff262626), // Used for text/icons on top of primary color
     onSecondary: Color(0xffAAAAAA),
     onPrimaryFixed: Color(0xff313131),

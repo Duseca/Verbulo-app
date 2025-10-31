@@ -34,13 +34,37 @@ class Assets {
   /// assets/images/apple.png
   static const String imagesApple = "assets/images/apple.png";
 
+  /// Assets for imagesBack
+  /// assets/images/back.png
+  static const String imagesBack = "assets/images/back.png";
+
+  /// Assets for imagesBook
+  /// assets/images/book.png
+  static const String imagesBook = "assets/images/book.png";
+
+  /// Assets for imagesCalender
+  /// assets/images/calender.png
+  static const String imagesCalender = "assets/images/calender.png";
+
+  /// Assets for imagesComplete
+  /// assets/images/complete.png
+  static const String imagesComplete = "assets/images/complete.png";
+
   /// Assets for imagesFacebook
   /// assets/images/facebook.png
   static const String imagesFacebook = "assets/images/facebook.png";
 
+  /// Assets for imagesFire
+  /// assets/images/fire.png
+  static const String imagesFire = "assets/images/fire.png";
+
   /// Assets for imagesGooglr
   /// assets/images/googlr.png
   static const String imagesGooglr = "assets/images/googlr.png";
+
+  /// Assets for imagesHome
+  /// assets/images/home.png
+  static const String imagesHome = "assets/images/home.png";
 
   /// Assets for imagesLesson1
   /// assets/images/lesson1.png
@@ -57,5 +81,37 @@ class Assets {
   /// Assets for imagesLogo
   /// assets/images/logo.png
   static const String imagesLogo = "assets/images/logo.png";
+
+  /// Assets for imagesNext
+  /// assets/images/next.png
+  static const String imagesNext = "assets/images/next.png";
+
+  /// Assets for imagesPath
+  /// assets/images/path.png
+  static const String imagesPath = "assets/images/path.png";
+
+  /// Assets for imagesPerson
+  /// assets/images/person.png
+  static const String imagesPerson = "assets/images/person.png";
+
+  /// Assets for imagesPlay
+  /// assets/images/play.png
+  static const String imagesPlay = "assets/images/play.png";
+
+  /// Assets for imagesQuiz
+  /// assets/images/quiz.png
+  static const String imagesQuiz = "assets/images/quiz.png";
+
+  /// Assets for imagesReward
+  /// assets/images/reward.png
+  static const String imagesReward = "assets/images/reward.png";
+
+  /// Assets for imagesSee
+  /// assets/images/see.png
+  static const String imagesSee = "assets/images/see.png";
+
+  /// Assets for imagesStar
+  /// assets/images/star.png
+  static const String imagesStar = "assets/images/star.png";
 }
 

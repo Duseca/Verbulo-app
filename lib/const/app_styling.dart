@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:verbulo/const/app_colors.dart';
+import 'package:verbulo/theme/theme_provider.dart';
 
 BoxDecoration circle(Color color, Color? borderColor, {double width = 1}) {
   return BoxDecoration(
@@ -36,6 +37,13 @@ BoxDecoration roundedsr({Color? color, double? radius, Color? color2}) {
         offset: Offset(0, 4), // Shadow position
       ),
     ],
+  );
+}
+
+BoxDecoration bluegreydecor() {
+  return rounded2(
+    ThemeUtils.isDarkMode(Get.context!) ? kSecondaryColor : Color(0xffF2F2F7),
+    ThemeUtils.isDarkMode(Get.context!) ? kSecondaryColor : Color(0xffF2F2F7),
   );
 }
 

@@ -22,7 +22,7 @@ Color getsubtextcolor(BuildContext context) {
   return Theme.of(context).colorScheme.onSecondary;
 }
 
-Color getsixth(BuildContext context) {
+Color getlightBluedarkblue(BuildContext context) {
   return Theme.of(context).colorScheme.onTertiary;
 }
 
