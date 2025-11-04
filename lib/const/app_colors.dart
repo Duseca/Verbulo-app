@@ -30,15 +30,15 @@ Color dgreylgrey(BuildContext context) {
   return Theme.of(context).colorScheme.onPrimaryFixed;
 }
 
-Color getappbgcolor(BuildContext context) {
-  return Theme.of(context).scaffoldBackgroundColor;
+Color getgrey5white(BuildContext context) {
+  return Theme.of(context).splashColor;
 }
 
 const kPrimaryColor = Color(0xffffffff);
 const kSecondaryColor = Color(0xff2C3E50);
 const kSecondaryColor2 = Color.fromRGBO(245, 194, 111, 1);
 const kMustard = Color(0xffF39C12);
-const kSecondaryBlue = Color(0xff003F88);
+const kSecondaryBlue = Color(0xff405161);
 
 const kSecondary2 = Color(0xff3AADC1);
 
@@ -75,7 +75,7 @@ const kTextColor3 = Color(0xff090B2F);
 const kTextColor4 = Color(0xff31383C);
 const kTextColor5 = Color(0xff62686B);
 const kGrey1Color = Color(0xffF2F3F4);
-const kGrey2Color = Color(0xffE6E6E8);
+const kGrey2Color = Color(0xffE5E5EA);
 const kGrey4Color = Color(0xffB3B5BA);
 const kGrey5Color = Color(0xff9A9CA3);
 const kGrey8Color = Color(0xff4E515E);
@@ -87,7 +87,7 @@ const kToggleButtonShadow = Color(0xffEFF3F8);
 const kBorderColor = Color(0xffF2F3F4);
 const kBorder2Color = Color(0xff675A55);
 const kSeoulColor = Color(0xffF9F9F9);
-const kGreenColor = Color(0xff34A853);
+const kGreenColor = Color(0xff27AE60);
 const kRedColor = Color(0xffFF002E);
 const kYellowColor = Color(0xffFFC121);
 const kRatedColor = Color(0xffFFC000);

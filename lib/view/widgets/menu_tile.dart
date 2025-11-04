@@ -18,15 +18,18 @@ class Menutile extends StatelessWidget {
     this.trailtext,
     this.iconcolor,
     this.linecolor,
+    this.padends,
+    this.flipicon,
+    this.leadtextsize,
     this.space,
     this.leadingcolor,
   });
   final String? path, title, trailIcon, trailtext;
   final VoidCallback? ontap;
-  final bool? hasline, hasicon;
+  final bool? hasline, hasicon, flipicon;
   final Widget? trailing;
   final Color? textcolor, leadingcolor, iconcolor, linecolor;
-  final double? space;
+  final double? space, padends, leadtextsize;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,7 +37,7 @@ class Menutile extends StatelessWidget {
         IconTitleSubtitle(
           hasicon: hasicon ?? true,
           path: path,
-          size1: 14,
+          size1: leadtextsize ?? 14,
 
           iconheight: 24,
           iconcolor: leadingcolor ?? null,
@@ -42,21 +45,38 @@ class Menutile extends StatelessWidget {
           title: title,
           weight1: FontWeight.w500,
           ontap: ontap,
-          padEnds: 20,
+          padEnds: padends ?? 20,
           hastsubtitle: false,
           trailing:
               trailing ??
               Row(
                 spacing: 6,
                 mainAxisSize: MainAxisSize.min,
-                children: [
-                  MyText(text: trailtext ?? '', color: kGreyColor, size: 12),
-                  Image.asset(
-                    color: iconcolor ?? null,
-                    trailIcon ?? Assets.imagesLogo,
-                    height: 20,
-                  ),
-                ],
+                children: flipicon == true
+                    ? [
+                        Image.asset(
+                          color: iconcolor ?? null,
+                          trailIcon ?? Assets.imagesLogo,
+                          height: 20,
+                        ),
+                        MyText(
+                          text: trailtext ?? '',
+                          color: textcolor ?? kGreyColor,
+                          size: 12,
+                        ),
+                      ]
+                    : [
+                        MyText(
+                          text: trailtext ?? '',
+                          color: textcolor ?? getTertiary(context),
+                          size: 12,
+                        ),
+                        Image.asset(
+                          color: iconcolor ?? null,
+                          trailIcon ?? Assets.imagesLogo,
+                          height: 20,
+                        ),
+                      ],
               ),
           padVertical: space ?? 20,
         ),

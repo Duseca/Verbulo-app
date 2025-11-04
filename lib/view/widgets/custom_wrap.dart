@@ -10,24 +10,40 @@ import 'package:verbulo/view/widgets/my_text_widget.dart';
 class CustomWrap extends StatelessWidget {
   const CustomWrap({
     super.key,
-    required this.currentindex,
-    this.ontap,
+    required this.currentIndex,
+    this.onTap,
     required this.items,
-    this.hasicon = true,
-    this.hasstar = true,
-    this.outlinecolor,
+    this.hasIcon = true,
+    this.hasStar = true,
+    this.outlineColor,
+    this.bgColor,
+    this.selectedBgColor,
+    this.icons,
+    this.iconSize,
+    this.textSize,
+    this.textcolor,
+    this.selectedtextcolor,
+    this.spacing,
   });
-  final int currentindex;
-  final void Function(int)? ontap; // Allow ontap to receive the index
+
+  final int currentIndex;
+  final void Function(int)? onTap;
   final List<String> items;
-  final bool? hasicon, hasstar;
-  final Color? outlinecolor;
+  final bool? hasIcon, hasStar;
+  final Color? outlineColor, textcolor, selectedtextcolor;
+  final Color? bgColor; // for unselected background
+  final Color? selectedBgColor; // for selected background
+  final List<String>? icons; // list of icons for each item
+  final double? iconSize; // new: custom icon size
+  final double? textSize, spacing; // new: custom text size
+
   @override
   Widget build(BuildContext context) {
     RxInt current = 0.obs;
+
     void _onTap(int index) {
-      if (ontap != null) {
-        ontap!(index); // Pass index to ontap callback
+      if (onTap != null) {
+        onTap!(index);
       } else {
         current.value = index;
       }
@@ -38,57 +54,54 @@ class CustomWrap extends StatelessWidget {
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.start,
         alignment: WrapAlignment.start,
-        //   clipBehavior: Clip.none,
-        spacing: 6, // Horizontal space between the tags
-        runSpacing: 6, // Vertical space between the lines of tags
+        spacing: spacing ?? 6,
+        runSpacing: spacing ?? 6,
         children: List.generate(items.length, (index) {
-          return Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              GestureDetector(
-                onTap: () => _onTap(index), // Call _onTap with the index
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                  child: AnimatedContainer(
-                    padding: EdgeInsets.symmetric(vertical: 7, horizontal: 10),
-                    duration: const Duration(milliseconds: 300),
+          final bool isSelected = currentIndex == index;
 
-                    decoration: rounded2r(
-                      currentindex != index
-                          ? kSecondaryColor2
-                          : dgreylgrey(context),
-                      currentindex != index
-                          ? kSecondaryColor2
-                          : outlinecolor ?? dgreylgrey(context),
-                      7,
-                    ),
-                    //    width: 30,
-                    child: Center(
-                      child: Row(
-                        children: [
-                          if (hasicon == true)
-                            if (index != 0)
-                              CommonImageView(
-                                imagePath: Assets.imagesStar,
-                                height: 15,
-                              ),
-                          MyText(
-                            text: items[index],
-                            paddingLeft: 3,
-                            paddingRight: 3,
-                            size: 12,
-                            weight: currentindex != index
-                                ? wsemibold
-                                : wregular,
-                            color: kSecondaryColor,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+          return GestureDetector(
+            onTap: () => _onTap(index),
+            child: AnimatedContainer(
+              padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+              duration: const Duration(milliseconds: 300),
+              decoration: rounded2r(
+                isSelected
+                    ? (selectedBgColor ?? dgreylgrey(context))
+                    : (bgColor ?? kSecondaryColor2),
+                isSelected
+                    ? (outlineColor ?? dgreylgrey(context))
+                    : (outlineColor ?? kSecondaryColor2),
+                7,
               ),
-            ],
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (hasIcon == true)
+                    if ((icons != null && icons!.length > index))
+                      CommonImageView(
+                        imagePath: icons![index],
+                        height: iconSize ?? 15,
+                        width: iconSize ?? 15,
+                      )
+                    else if (hasStar == true && index != 0)
+                      CommonImageView(
+                        imagePath: Assets.imagesStar,
+                        height: iconSize ?? 15,
+                        width: iconSize ?? 15,
+                      ),
+                  MyText(
+                    text: items[index],
+                    paddingLeft: 3,
+                    paddingRight: 3,
+                    size: textSize ?? 12,
+                    weight: isSelected ? wregular : wsemibold,
+                    color: isSelected
+                        ? selectedtextcolor ?? kSecondaryColor
+                        : textcolor ?? kSecondaryColor,
+                  ),
+                ],
+              ),
+            ),
           );
         }),
       ),

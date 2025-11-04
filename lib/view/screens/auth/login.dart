@@ -6,6 +6,7 @@ import 'package:verbulo/const/app_colors.dart';
 import 'package:verbulo/const/app_styling.dart';
 import 'package:verbulo/generated/assets.dart';
 import 'package:verbulo/view/screens/auth/signup.dart';
+import 'package:verbulo/view/screens/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:verbulo/view/widgets/common_image_view_widget.dart';
 import 'package:verbulo/view/widgets/custom_check_box.dart';
 import 'package:verbulo/view/widgets/custom_rich_text.dart';
@@ -59,25 +60,30 @@ class Login extends StatelessWidget {
                     ),
                     MyTextField(
                       marginBottom: 5,
-                      label: 'PASSWORD',  hasBottomRadius: T,
+                      label: 'PASSWORD',
+                      hasBottomRadius: T,
                       hint: 'Enter Password',
                       suffixIcon: Image.asset(
                         color: getTertiary(context),
-                        Assets.imagesSee,height: 12,),
+                        Assets.imagesSee,
+                        height: 12,
+                      ),
                     ),
-                   SizedBox(height: 10,),
+                    SizedBox(height: 10),
                     Row(
                       spacing: 10,
                       children: [
                         CustomCheckBox(isActive: false, onTap: () {}),
-                     MyText(text: 'Remember me'),
-                     Spacer(), MyText(text: 'Forget Password?')
+                        MyText(text: 'Remember me'),
+                        Spacer(), MyText(text: 'Forget Password?'),
 
                         //  Spacer(),
                       ],
                     ),
                     MyButton.filled(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => BottomNavBar());
+                      },
                       buttonText: 'Sign In',
                       mTop: 40,
                       mBottom: 40,
@@ -133,7 +139,7 @@ class Login extends StatelessWidget {
               CustomRichText(
                 info: "Don't have an account?",
                 title: ' Sign Up',
-                ontaptext: ()=>Get.to(()=>SignUp()),
+                ontaptext: () => Get.to(() => SignUp()),
               ),
               SizedBox(height: 30),
             ],

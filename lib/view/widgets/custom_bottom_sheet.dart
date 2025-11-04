@@ -19,7 +19,7 @@ class CustomBottomSheet extends StatelessWidget {
       height: height ?? null,
       padding: EdgeInsets.all(padends ?? 20),
       decoration: BoxDecoration(
-        color: kPrimaryColor,
+        color: getPrimaryColor(context),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),

@@ -12,6 +12,286 @@ import 'package:verbulo/generated/assets.dart';
 import 'package:verbulo/view/widgets/common_image_view_widget.dart';
 import 'package:verbulo/view/widgets/my_button.dart';
 import 'package:verbulo/view/widgets/my_text_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:table_calendar/table_calendar.dart';
+
+// ignore: must_be_immutable
+class CalendarDialog extends StatefulWidget {
+  final DateTime? initialRangeStart;
+  final DateTime? initialRangeEnd;
+  final DateTime? initialFocusedDay;
+  bool? rangeSelection;
+  final Function(DateTime?, DateTime?, DateTime?)? onRangeSelected;
+  CalendarDialog({
+    super.key,
+    this.initialRangeStart,
+    this.initialRangeEnd,
+    this.initialFocusedDay,
+    this.onRangeSelected,
+    this.rangeSelection = true,
+  });
+  @override
+  State<CalendarDialog> createState() => _CalendarDialogState();
+}
+
+class _CalendarDialogState extends State<CalendarDialog> {
+  DateTime? _selectedDay;
+  DateTime? _focusedDay;
+  DateTime? _rangeStart;
+  DateTime? _rangeEnd;
+  @override
+  void initState() {
+    super.initState();
+    _selectedDay = widget.initialFocusedDay ?? DateTime.now();
+    _focusedDay = widget.initialFocusedDay ?? DateTime.now();
+    _rangeStart = widget.initialRangeStart;
+    _rangeEnd = widget.initialRangeEnd;
+  }
+
+  void _onLeftChevronPressed() {
+    setState(() {
+      _focusedDay = DateTime(_focusedDay!.year, _focusedDay!.month - 1, 1);
+    });
+  }
+
+  void _onRightChevronPressed() {
+    setState(() {
+      _focusedDay = DateTime(_focusedDay!.year, _focusedDay!.month + 1, 1);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final List<DateTime> missedDates = [
+      DateTime(2025, DateTime.now().month, 8),
+      DateTime(2025, 11, 7),
+      DateTime(2025, 11, 15),
+    ];
+    return GestureDetector(
+      onTap: () => Get.back(),
+      child: Material(
+        color: Colors.transparent,
+        child: Center(
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: getPrimaryColor(context),
+                boxShadow: [
+                  BoxShadow(
+                    color: kQuaternaryColor.withOpacity(0.2),
+                    spreadRadius: 2,
+                    blurRadius: 2,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(32),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TableCalendar(
+                    weekendDays: [7],
+                    daysOfWeekHeight: 45,
+                    rangeSelectionMode: widget.rangeSelection == true
+                        ? RangeSelectionMode.toggledOn
+                        : RangeSelectionMode.toggledOff,
+                    rangeStartDay: _rangeStart,
+                    rangeEndDay: _rangeEnd,
+                    onRangeSelected: (start, end, focusedDay) {
+                      setState(() {
+                        _rangeStart = start;
+                        _rangeEnd = end;
+                        _focusedDay = focusedDay;
+                      });
+                      widget.onRangeSelected?.call(start, end, focusedDay);
+                    },
+                    // firstDay: DateTime.utc(2010, 10, 16),
+                    currentDay: DateTime.now(),
+
+                    firstDay: DateTime.now(),
+                    lastDay: DateTime.utc(2040, 3, 14),
+                    focusedDay: _focusedDay!,
+                    selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+                    onDaySelected: (selectedDay, focusedDay) {
+                      setState(() {
+                        _selectedDay = selectedDay;
+                        _focusedDay = focusedDay;
+                      });
+                      widget.onRangeSelected?.call(
+                        selectedDay,
+                        null,
+                        focusedDay,
+                      );
+                    },
+                    calendarBuilders: CalendarBuilders(
+                      withinRangeBuilder: (context, date, focusedDay) {
+                        final isMissed = missedDates.any(
+                          (d) => isSameDay(d, date),
+                        );
+
+                        if (isMissed) {
+                          return Container(
+                            padding: EdgeInsets.all(8),
+                            margin: const EdgeInsets.all(0),
+                            decoration: const BoxDecoration(
+                              color: Colors.red, // 🔴 Red for missed
+                              shape: BoxShape.circle,
+                            ),
+                            alignment: Alignment.center,
+                            child: Text(
+                              '${date.day}',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          );
+                        }
+
+                        // normal day styling (if not missed)
+                        return Center(
+                          child: Text(
+                            '${date.day}',
+                            style: TextStyle(
+                              color: getTertiary(context),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: MANROPE,
+                            ),
+                          ),
+                        );
+                      },
+
+                      headerTitleBuilder: (context, date) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              DateFormat('MMMM').format(date),
+                              style: TextStyle(
+                                color: kQuaternaryColor,
+                                fontSize: 32,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: MANROPE,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                IconButton(
+                                  onPressed: _onLeftChevronPressed,
+                                  icon: Image.asset(
+                                    Assets.imagesPre,
+                                    height: 24,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: _onRightChevronPressed,
+                                  icon: Image.asset(
+                                    Assets.imagesNext2,
+                                    height: 24,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+
+                    startingDayOfWeek: StartingDayOfWeek.monday,
+                    headerStyle: const HeaderStyle(
+                      titleCentered: false,
+                      formatButtonVisible: false,
+                      leftChevronVisible: false,
+                      rightChevronVisible: false,
+                    ),
+                    calendarStyle: CalendarStyle(
+                      cellPadding: EdgeInsets.all(0),
+                      cellMargin: EdgeInsets.all(0),
+                      tablePadding: EdgeInsets.all(0),
+                      rangeHighlightColor: kSecondaryColor2,
+                      rangeStartDecoration: const BoxDecoration(
+                        color: kMustard,
+                        shape: BoxShape.circle,
+                      ),
+                      rangeEndDecoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: kMustard,
+                      ),
+
+                      selectedDecoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: kMustard,
+                      ),
+                      selectedTextStyle: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: kTertiaryColor,
+                        fontFamily: MANROPE,
+                      ),
+                      withinRangeTextStyle: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: kTertiaryColor,
+                        fontFamily: MANROPE,
+                      ),
+                      defaultTextStyle: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: getTertiary(context),
+                        fontFamily: MANROPE,
+                      ),
+
+                      todayDecoration: const BoxDecoration(
+                        color: kMustard,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    daysOfWeekStyle: DaysOfWeekStyle(
+                      dowTextFormatter: (date, locale) {
+                        List<String> weekDaysAbbreviations = [
+                          'M',
+                          'T',
+                          'W',
+                          'T',
+                          'F',
+                          'S',
+                          'S',
+                        ];
+                        return weekDaysAbbreviations[date.weekday - 1];
+                      },
+                      weekdayStyle: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: MANROPE,
+                        color: kQuaternaryColor,
+                      ),
+
+                      weekendStyle: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: MANROPE,
+                        color: kQuaternaryColor,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class CustomDialog extends StatelessWidget {
   const CustomDialog({

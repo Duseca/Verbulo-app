@@ -9,6 +9,8 @@ import 'package:verbulo/const/app_colors.dart';
 import 'package:verbulo/generated/assets.dart';
 import 'package:verbulo/theme/theme_provider.dart';
 import 'package:verbulo/view/screens/home/home.dart';
+import 'package:verbulo/view/screens/library/library.dart';
+import 'package:verbulo/view/screens/quiz/quiz.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -37,8 +39,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   final List<Widget> screens = [
     Home(),
-    Scaffold(),
-    Scaffold(),
+    Library(),
+    Quiz(),
     Scaffold(),
     Scaffold(),
   ];
