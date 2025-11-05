@@ -61,12 +61,13 @@ class PriceText extends StatelessWidget {
   final String title;
   final TextStyle firstTextStyle;
   final TextStyle secondTextStyle;
-
+  final TextAlign? align;
   // Constructor with default values for size1, size2, and color
   PriceText({
     required this.info,
     required this.title,
     double? size1,
+    this.align,
     double? size2,
     Color? color,
     color2,
@@ -94,6 +95,7 @@ class PriceText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
+      textAlign: align ?? TextAlign.start,
       text: TextSpan(
         children: [
           TextSpan(text: info, style: firstTextStyle),

@@ -50,6 +50,10 @@ class Assets {
   /// assets/images/calender.png
   static const String imagesCalender = "assets/images/calender.png";
 
+  /// Assets for imagesCelebrate
+  /// assets/images/celebrate.png
+  static const String imagesCelebrate = "assets/images/celebrate.png";
+
   /// Assets for imagesComplete
   /// assets/images/complete.png
   static const String imagesComplete = "assets/images/complete.png";
@@ -70,6 +74,10 @@ class Assets {
   /// assets/images/fire.png
   static const String imagesFire = "assets/images/fire.png";
 
+  /// Assets for imagesFire2
+  /// assets/images/fire2.png
+  static const String imagesFire2 = "assets/images/fire2.png";
+
   /// Assets for imagesFood
   /// assets/images/food.png
   static const String imagesFood = "assets/images/food.png";
@@ -77,6 +85,14 @@ class Assets {
   /// Assets for imagesGooglr
   /// assets/images/googlr.png
   static const String imagesGooglr = "assets/images/googlr.png";
+
+  /// Assets for imagesHeadphonedark
+  /// assets/images/headphonedark.png
+  static const String imagesHeadphonedark = "assets/images/headphonedark.png";
+
+  /// Assets for imagesHeadphonelight
+  /// assets/images/headphonelight.png
+  static const String imagesHeadphonelight = "assets/images/headphonelight.png";
 
   /// Assets for imagesHome
   /// assets/images/home.png
@@ -109,6 +125,10 @@ class Assets {
   /// Assets for imagesPath
   /// assets/images/path.png
   static const String imagesPath = "assets/images/path.png";
+
+  /// Assets for imagesPencil
+  /// assets/images/pencil.png
+  static const String imagesPencil = "assets/images/pencil.png";
 
   /// Assets for imagesPerson
   /// assets/images/person.png
@@ -154,6 +174,10 @@ class Assets {
   /// assets/images/sort.png
   static const String imagesSort = "assets/images/sort.png";
 
+  /// Assets for imagesSound
+  /// assets/images/sound.png
+  static const String imagesSound = "assets/images/sound.png";
+
   /// Assets for imagesStar
   /// assets/images/star.png
   static const String imagesStar = "assets/images/star.png";
@@ -169,6 +193,10 @@ class Assets {
   /// Assets for imagesStar4
   /// assets/images/star4.png
   static const String imagesStar4 = "assets/images/star4.png";
+
+  /// Assets for imagesStar5
+  /// assets/images/star5.png
+  static const String imagesStar5 = "assets/images/star5.png";
 
   /// Assets for imagesUp
   /// assets/images/up.png

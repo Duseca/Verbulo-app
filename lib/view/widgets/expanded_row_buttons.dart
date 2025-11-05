@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:verbulo/const/app_colors.dart';
+import 'package:verbulo/const/app_sizes.dart';
 import 'package:verbulo/view/widgets/custom_animated_row.dart';
 import 'package:verbulo/view/widgets/my_button.dart';
 
@@ -29,8 +30,8 @@ class ExpandedRowButtons extends StatelessWidget {
     this.btn2FontColor,
     this.btn1OnTap,
     this.btn2OnTap,
-    this.height1 = 56,
-    this.height2 = 56,
+    this.height1 = 35,
+    this.height2 = 35,
     this.isexpanded1 = false,
     this.isexpanded2 = false,
   });
@@ -42,31 +43,35 @@ class ExpandedRowButtons extends StatelessWidget {
       children: [
         Expanded(
           child: MyButton.icon(
+            mBottom: 0,
             padends: 10,
             onTap: btn1OnTap ?? () {}, // Default empty action if not provided
             buttonText: btn1Text ?? 'Remove',
-            backgroundColor: btn1BackgroundColor ?? ktransparent,
+            backgroundColor: btn1BackgroundColor ?? Color(0xffF8F9FA),
             outlineColor: btn1OutlineColor ?? kSecondaryBlue,
             isRightIcon: false,
-            fontSize: 13,
+            fontSize: 14,
+            fontWeight: wbold,
             //   isexpanded: isexpanded1,
-            height: height1 ?? 45,
+            height: height1 ?? 35,
             fontColor: btn1FontColor ?? kSecondaryBlue,
           ),
         ),
         Expanded(
           child: MyButton.icon(
             padends: 0,
+            mBottom: 0,
 
             onTap: btn2OnTap ?? () {}, // Default empty action if not provided
             buttonText: btn2Text ?? 'Update',
             backgroundColor: btn2BackgroundColor ?? kSecondaryBlue,
             outlineColor: btn2OutlineColor ?? kSecondaryBlue,
             isRightIcon: false,
-            height: height2 ?? 45,
+            height: height2 ?? 35,
             //     isexpanded: isexpanded2,
-            fontSize: 13,
-            fontColor: btn2FontColor ?? kPrimaryColor,
+            fontSize: 14,
+            fontWeight: wbold,
+            fontColor: btn2FontColor ?? kSecondaryBlue,
           ),
         ),
       ],

@@ -5,14 +5,13 @@ import 'package:verbulo/const/app_colors.dart';
 import 'package:verbulo/const/app_sizes.dart';
 import 'package:verbulo/const/app_styling.dart';
 import 'package:verbulo/generated/assets.dart';
+import 'package:verbulo/view/screens/quiz/begin_quiz.dart';
 import 'package:verbulo/view/widgets/common_image_view_widget.dart';
 import 'package:verbulo/view/widgets/icon_text_row.dart';
-import 'package:verbulo/view/widgets/menu_tile.dart';
-import 'package:verbulo/view/widgets/my_button.dart';
 import 'package:verbulo/view/widgets/my_text_widget.dart';
+import 'package:verbulo/view/widgets/quiz_card.dart';
 import 'package:verbulo/view/widgets/simple_app_bar.dart';
 import 'package:verbulo/view/widgets/stack_bg.dart';
-import 'package:verbulo/view/widgets/trans_container.dart';
 
 class Quiz extends StatelessWidget {
   const Quiz({super.key});
@@ -75,20 +74,25 @@ class Quiz extends StatelessWidget {
                                 color: Colors.white,
                                 weight: wmedium,
                               ),
-                              IconTextRow(
-                                flipX: true,
-                                expanded: false,
-                                text: 'Begin Quiz',
-                                padends: 7,
-                                padvertical: 10,
-                                weight: wmedium,
-                                spacing: 10,
-                                iconpath: Assets.imagesRight,
-                                textsize: 12,
-                                iconsize: 12,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                textcolor: kSecondaryColor,
-                                decoration: rounded2r(kMustard, kMustard, 8),
+                              InkWell(
+                                onTap: () {
+                                  Get.to(() => BeginQuiz());
+                                },
+                                child: IconTextRow(
+                                  flipX: true,
+                                  expanded: false,
+                                  text: 'Begin Quiz',
+                                  padends: 7,
+                                  padvertical: 10,
+                                  weight: wmedium,
+                                  spacing: 10,
+                                  iconpath: Assets.imagesRight,
+                                  textsize: 12,
+                                  iconsize: 12,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  textcolor: kSecondaryColor,
+                                  decoration: rounded2r(kMustard, kMustard, 8),
+                                ),
                               ),
                             ],
                           ),
@@ -124,61 +128,6 @@ class Quiz extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class Quizcard extends StatelessWidget {
-  const Quizcard({super.key, this.isweeklyquiz});
-  final bool? isweeklyquiz;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 10),
-      padding: EdgeInsets.all(12),
-      decoration: rounded2r(
-        isweeklyquiz ?? F ? kSecondaryColor2 : getlightBluedarkblue(context),
-        ktransparent,
-        20,
-      ),
-
-      child: Column(
-        children: [
-          Menutile(
-            flipicon: T,
-            padends: 0,
-            leadtextsize: 18,
-            space: 10,
-            hasline: false,
-            title: isweeklyquiz ?? F ? 'Weekly Quiz' : 'Daily Quiz',
-            iconcolor: isweeklyquiz ?? F ? kSecondaryColor : null,
-            textcolor: isweeklyquiz ?? F ? kSecondaryColor : Colors.white,
-            trailtext: '12-Aug-2025',
-            hasicon: false,
-
-            trailIcon: Assets.imagesCalender,
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: MyText(
-                  text: 'Word : Benevolent',
-                  size: 16,
-                  color: isweeklyquiz ?? F ? kSecondaryColor : null,
-                  weight: wmedium,
-                ),
-              ),
-              TransparentContainer(
-                opacity: 1,
-                color1: kGreenColor,
-
-                text: 'Score 4/5',
-              ),
-            ],
-          ),
-        ],
-      ),
     );
   }
 }

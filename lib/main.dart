@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:verbulo/controller/landing_controller.dart';
+import 'package:verbulo/controller/quiz_controller.dart';
 import 'package:verbulo/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +11,7 @@ import 'package:verbulo/view/screens/launch/splash_screen.dart';
 void main() {
   runApp(MyApp());
   Get.put(LandingController());
+  Get.put(QuizController());
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
