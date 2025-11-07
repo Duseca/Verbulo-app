@@ -64,10 +64,10 @@ class Library extends StatelessWidget {
                                 weight: wmedium,
                               ),
                               CustomWrap(
-                                textcolor: getTertiary(context),
                                 textSize: 16,
                                 iconSize: 24,
                                 bgColor: getquaternary(context),
+                                textcolor: getTertiary(context),
                                 outlineColor: kGrey2Color,
                                 items: ['Favorites', 'Emotions', 'Food'],
                                 icons: [

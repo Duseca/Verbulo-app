@@ -61,7 +61,7 @@ AppBar simpleAppBar({
             size: titlesize ?? 16,
             //    textAlign: centerTitle == true ? TextAlign.center : null,
             weight: FontWeight.w700,
-            color: contentColor ?? kTertiaryColor,
+            color: contentColor ?? getTertiary(Get.context!),
           )
         : Row(
             spacing: 10,

@@ -23,13 +23,17 @@ class Menutile extends StatelessWidget {
     this.leadtextsize,
     this.space,
     this.leadingcolor,
+    this.decoration,
+    this.iconsize,
+    this.gap,
   });
   final String? path, title, trailIcon, trailtext;
   final VoidCallback? ontap;
+  final BoxDecoration? decoration;
   final bool? hasline, hasicon, flipicon;
   final Widget? trailing;
   final Color? textcolor, leadingcolor, iconcolor, linecolor;
-  final double? space, padends, leadtextsize;
+  final double? space, padends, leadtextsize, iconsize, gap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,11 +42,13 @@ class Menutile extends StatelessWidget {
           hasicon: hasicon ?? true,
           path: path,
           size1: leadtextsize ?? 14,
-
-          iconheight: 24,
+          decoration: decoration,
+          rowspace: gap,
+          iconheight: iconsize ?? 24,
           iconcolor: leadingcolor ?? null,
           color1: textcolor ?? kTertiaryColor,
           title: title,
+
           weight1: FontWeight.w500,
           ontap: ontap,
           padEnds: padends ?? 20,

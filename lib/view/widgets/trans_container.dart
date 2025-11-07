@@ -8,7 +8,7 @@ class TransparentContainer extends StatelessWidget {
   final Color? color2; // Second color (nullable)
   final double? opacity; // Opacity (nullable)
   final String? text; // Nullable text
-  final double? textSize; // Nullable text size
+  final double? textSize, padends, padvertical; // Nullable text size
   final Color? textColor; // Nullable text color
   final FontWeight? textWeight; // Nullable text weight
 
@@ -21,12 +21,17 @@ class TransparentContainer extends StatelessWidget {
     this.textSize,
     this.textColor,
     this.textWeight,
+    this.padends,
+    this.padvertical,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(
+        horizontal: padends ?? 10,
+        vertical: padvertical ?? 10,
+      ),
       decoration: BoxDecoration(
         color: (color1 ?? kSecondaryColor).withOpacity(opacity ?? 0.5),
         borderRadius: BorderRadius.circular(12),

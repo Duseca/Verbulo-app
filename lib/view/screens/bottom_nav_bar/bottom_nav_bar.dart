@@ -10,7 +10,9 @@ import 'package:verbulo/generated/assets.dart';
 import 'package:verbulo/theme/theme_provider.dart';
 import 'package:verbulo/view/screens/home/home.dart';
 import 'package:verbulo/view/screens/library/library.dart';
+import 'package:verbulo/view/screens/profile/profile.dart';
 import 'package:verbulo/view/screens/quiz/quiz.dart';
+import 'package:verbulo/view/screens/ranking/ranking.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -41,8 +43,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
     Home(),
     Library(),
     Quiz(),
-    Scaffold(),
-    Scaffold(),
+    Ranking(),
+    Profile(),
   ];
 
   @override

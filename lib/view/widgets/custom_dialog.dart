@@ -510,7 +510,7 @@ class DialogLayout extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: kQuaternaryColor,
+                          color: getPrimaryColor(context),
                           border: Border.all(color: ktransparent),
                         ),
                         child: Column(
@@ -518,30 +518,30 @@ class DialogLayout extends StatelessWidget {
                           children: children ?? [],
                         ),
                       ),
-                      Positioned(
-                        top: 10,
-                        right: leftpad ?? 16,
-                        left: leftpad ?? 16,
-                        child: simpleAppBar(
-                          centerTitle: true,
-                          title: title,
-                          bgColor: ktransparent,
-                          height: 30,
-                          haveBackButton: false,
-                          actions: [
-                            GestureDetector(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: CommonImageView(
-                                imagePath: Assets.imagesLogo,
-                                height: 24,
-                              ),
-                            ),
-                            SizedBox(width: 20),
-                          ],
-                        ),
-                      ),
+                      // Positioned(
+                      //   top: 10,
+                      //   right: leftpad ?? 16,
+                      //   left: leftpad ?? 16,
+                      //   child: simpleAppBar(
+                      //     centerTitle: true,
+                      //     title: title,
+                      //     bgColor: ktransparent,
+                      //     height: 30,
+                      //     haveBackButton: false,
+                      //     actions: [
+                      //       GestureDetector(
+                      //         onTap: () {
+                      //           Get.back();
+                      //         },
+                      //         child: CommonImageView(
+                      //           imagePath: Assets.imagesLogo,
+                      //           height: 24,
+                      //         ),
+                      //       ),
+                      //       SizedBox(width: 20),
+                      //     ],
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),

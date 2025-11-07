@@ -11,7 +11,7 @@ class MyButton extends StatelessWidget {
   final String buttonText;
   final VoidCallback onTap;
   final double height;
-  final double width;
+  final double? width;
   final Color? backgroundColor, fontColor;
   final Color outlineColor;
   final double fontSize;
@@ -22,6 +22,7 @@ class MyButton extends StatelessWidget {
   final String? imagePath;
   final IconData? iconData;
   final double iconSize;
+  final Color? iconColor;
   final bool hasIcon, isdisable;
   final double mTop,
       mBottom,
@@ -50,7 +51,7 @@ class MyButton extends StatelessWidget {
     this.mhoriz = 0,
     this.space = 0,
     this.mTop = 0,
-    this.width = double.infinity,
+    this.width,
     this.outlineColor = Colors.black,
     this.fontSize = 16,
     this.fontWeight = FontWeight.w400,
@@ -61,6 +62,7 @@ class MyButton extends StatelessWidget {
        imagePath = null,
        iconData = null,
        iconSize = 20,
+       iconColor = null,
        isRightIcon = F,
        hasIcon = false,
        _buttonType = ButtonType.outline;
@@ -81,7 +83,7 @@ class MyButton extends StatelessWidget {
     this.mhoriz = 0,
     this.space = 0,
     this.mTop = 0,
-    this.width = double.infinity,
+    this.width,
     this.outlineColor = Colors.transparent,
     this.fontSize = 16,
     this.fontWeight = FontWeight.w400,
@@ -91,6 +93,7 @@ class MyButton extends StatelessWidget {
        imagePath = null,
        iconData = null,
        iconSize = 20,
+       iconColor = null,
        isRightIcon = F,
        hasIcon = false,
        _buttonType = ButtonType.gradient;
@@ -111,7 +114,7 @@ class MyButton extends StatelessWidget {
     this.mhoriz = 0,
     this.space = 0,
     this.mTop = 0,
-    this.width = double.infinity,
+    this.width,
     this.outlineColor = Colors.transparent,
     this.fontSize = 16,
     this.fontWeight = FontWeight.w400,
@@ -120,6 +123,7 @@ class MyButton extends StatelessWidget {
        svgPath = null,
        imagePath = null,
        iconData = null,
+       iconColor = null,
        iconSize = 20,
        isRightIcon = F,
        hasIcon = false,
@@ -131,6 +135,7 @@ class MyButton extends StatelessWidget {
     this.svgPath,
     this.fontColor,
     this.imagePath,
+    this.iconColor,
     this.iconData,
     this.backgroundColor,
     this.height = 48,
@@ -142,8 +147,9 @@ class MyButton extends StatelessWidget {
     this.mBottom = 20,
     this.mhoriz = 0,
     this.space = 8,
+
     this.mTop = 0,
-    this.width = double.infinity,
+    this.width,
     this.outlineColor = Colors.transparent,
     this.fontSize = 16,
     this.fontWeight = FontWeight.w400,
@@ -232,12 +238,16 @@ class MyButton extends StatelessWidget {
         imagePath!,
         height: iconSize,
         width: iconSize,
-        color: _getTextColor(),
+        color: _getIconColor(),
       );
     } else if (iconData != null) {
       return Icon(iconData, size: iconSize, color: _getTextColor());
     }
     return const SizedBox.shrink();
+  }
+
+  Color? _getIconColor() {
+    return iconColor; // 👈 use custom iconColor if provided
   }
 
   BoxDecoration _getDecoration() {
