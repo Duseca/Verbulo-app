@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
 
       title: 'VERBULO-APP',
       //theme: lightTheme,
-      theme: darkTheme,
+      theme: lightTheme,
       themeMode: ThemeMode.system,
 
       ///  themeMode: ThemeMode.light,

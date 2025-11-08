@@ -38,6 +38,7 @@ class DataStats extends StatelessWidget {
                               ? Assets.imagesChathistory
                               : Assets.imagesTime,
                           space: 8,
+                          leadingcolor: getbtnColor(context),
                           iconsize: 40,
                           trailing: SizedBox(),
                           //  path: item.iconPath,

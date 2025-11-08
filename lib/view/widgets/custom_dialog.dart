@@ -176,7 +176,7 @@ class _CalendarDialogState extends State<CalendarDialog> {
                             Text(
                               DateFormat('MMMM').format(date),
                               style: TextStyle(
-                                color: kQuaternaryColor,
+                                color: getTertiary(context),
                                 fontSize: 32,
                                 fontWeight: FontWeight.w500,
                                 fontFamily: MANROPE,
@@ -187,6 +187,7 @@ class _CalendarDialogState extends State<CalendarDialog> {
                                 IconButton(
                                   onPressed: _onLeftChevronPressed,
                                   icon: Image.asset(
+                                    color: getTertiary(context),
                                     Assets.imagesPre,
                                     height: 24,
                                   ),
@@ -194,6 +195,7 @@ class _CalendarDialogState extends State<CalendarDialog> {
                                 IconButton(
                                   onPressed: _onRightChevronPressed,
                                   icon: Image.asset(
+                                    color: getTertiary(context),
                                     Assets.imagesNext2,
                                     height: 24,
                                   ),
@@ -271,14 +273,14 @@ class _CalendarDialogState extends State<CalendarDialog> {
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         fontFamily: MANROPE,
-                        color: kQuaternaryColor,
+                        color: getTertiary(context),
                       ),
 
                       weekendStyle: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         fontFamily: MANROPE,
-                        color: kQuaternaryColor,
+                        color: getTertiary(context),
                       ),
                     ),
                   ),

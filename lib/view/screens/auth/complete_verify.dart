@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:verbulo/generated/assets.dart';
-import 'package:verbulo/view/screens/register_profile/landing.dart';
-import 'package:verbulo/view/screens/register_profile/tell_name.dart';
+import 'package:verbulo/view/screens/auth/register_profile/landing.dart';
+import 'package:verbulo/view/screens/auth/register_profile/tell_name.dart';
 import 'package:verbulo/view/widgets/common_image_view_widget.dart';
 import 'package:verbulo/view/widgets/moving_icon.dart';
 import 'package:verbulo/view/widgets/my_button.dart';
@@ -43,7 +43,9 @@ class CompleteVerify extends StatelessWidget {
                     MovingIcon(path: Assets.imagesComplete, height: 250),
                     MyButton.filled(
                       buttonText: 'Continue',
-                      onTap: () {Get.to(()=>Landing());},
+                      onTap: () {
+                        Get.to(() => Landing());
+                      },
                       mTop: 40,
                     ),
                   ],

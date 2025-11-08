@@ -16,7 +16,7 @@ class MyButton extends StatelessWidget {
   final Color outlineColor;
   final double fontSize;
   final FontWeight fontWeight;
-  final double borderRadius;
+  final double borderRadius, borderwidth;
 
   final String? svgPath;
   final String? imagePath;
@@ -56,6 +56,7 @@ class MyButton extends StatelessWidget {
     this.fontSize = 16,
     this.fontWeight = FontWeight.w400,
     this.borderRadius = 6,
+    this.borderwidth = 1,
   }) : backgroundColor = getbtnColor(Get.context!),
        gradient = null,
        svgPath = null,
@@ -88,6 +89,7 @@ class MyButton extends StatelessWidget {
     this.fontSize = 16,
     this.fontWeight = FontWeight.w400,
     this.borderRadius = 6,
+    this.borderwidth = 1,
   }) : backgroundColor = null,
        svgPath = null,
        imagePath = null,
@@ -119,6 +121,7 @@ class MyButton extends StatelessWidget {
     this.fontSize = 16,
     this.fontWeight = FontWeight.w400,
     this.borderRadius = 6,
+    this.borderwidth = 1,
   }) : gradient = null,
        svgPath = null,
        imagePath = null,
@@ -154,6 +157,7 @@ class MyButton extends StatelessWidget {
     this.fontSize = 16,
     this.fontWeight = FontWeight.w400,
     this.borderRadius = 6,
+    this.borderwidth = 1,
     this.iconSize = 20,
     this.isRightIcon = false, // 👈 new flag added
   }) : gradient = null,
@@ -255,14 +259,14 @@ class MyButton extends StatelessWidget {
       case ButtonType.outline:
         return BoxDecoration(
           color: backgroundColor ?? getbtnColor(Get.context!),
-          border: Border.all(color: outlineColor, width: 1.5),
+          border: Border.all(color: outlineColor, width: borderwidth),
           borderRadius: BorderRadius.circular(borderRadius),
         );
 
       case ButtonType.gradient:
         return BoxDecoration(
           gradient: gradient,
-          border: Border.all(color: outlineColor),
+          border: Border.all(color: outlineColor, width: borderwidth),
           borderRadius: BorderRadius.circular(borderRadius),
         );
 
@@ -270,7 +274,7 @@ class MyButton extends StatelessWidget {
       case ButtonType.icon:
         return BoxDecoration(
           color: backgroundColor ?? getbtnColor(Get.context!),
-          border: Border.all(color: outlineColor),
+          border: Border.all(color: outlineColor, width: borderwidth),
           borderRadius: BorderRadius.circular(borderRadius),
         );
     }

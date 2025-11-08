@@ -5,6 +5,7 @@ import 'package:verbulo/const/app_sizes.dart';
 import 'package:verbulo/const/app_styling.dart';
 import 'package:verbulo/generated/assets.dart';
 import 'package:verbulo/main.dart';
+import 'package:verbulo/theme/theme_provider.dart';
 import 'package:verbulo/view/widgets/common_image_view_widget.dart';
 import 'package:verbulo/view/widgets/my_text_widget.dart';
 import 'package:verbulo/view/widgets/simple_app_bar.dart';
@@ -69,8 +70,10 @@ class Ranking extends StatelessWidget {
                         decoration: rounded2r(
                           (index == 0)
                               ? kSecondaryColor2
-                              : getlightBluedarkblue(context),
-                          ktransparent,
+                              : getquaternary(context),
+                          ThemeUtils.isDarkMode(context)
+                              ? ktransparent
+                              : kGrey2Color,
                           20,
                         ),
 

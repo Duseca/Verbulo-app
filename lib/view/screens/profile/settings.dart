@@ -11,7 +11,9 @@ import 'package:verbulo/view/screens/profile/account.dart';
 import 'package:verbulo/view/screens/profile/change_pass.dart';
 import 'package:verbulo/view/screens/profile/data_stats.dart';
 import 'package:verbulo/view/screens/profile/notifications.dart';
+import 'package:verbulo/view/screens/profile/subscription.dart';
 import 'package:verbulo/view/screens/profile/support.dart';
+import 'package:verbulo/view/screens/profile/switch_mode.dart';
 import 'package:verbulo/view/widgets/common_image_view_widget.dart';
 import 'package:verbulo/view/widgets/custom_dialog.dart';
 import 'package:verbulo/view/widgets/menu_tile.dart';
@@ -55,7 +57,7 @@ class Settings extends StatelessWidget {
         iconPath: Assets.imagesSubscription,
         route: '/billing',
         onTap: () {
-          Navigator.pushNamed(context, '/billing');
+          Get.to(() => Subscription());
         },
       ),
       MenuItem(
@@ -70,6 +72,7 @@ class Settings extends StatelessWidget {
         title: 'Switch to Light Mode',
         iconPath: Assets.imagesSwitch,
         onTap: () {
+          Get.to(() => Switchmode());
           // toggle theme
           // ThemeUtils.toggleTheme(context);
         },

@@ -134,7 +134,9 @@ class Profile extends StatelessWidget {
                           child: Container(
                             decoration: rounded2(
                               getquaternary(context),
-                              getTertiary(context),
+                              ThemeUtils.isDarkMode(context)
+                                  ? ktransparent
+                                  : kGrey2Color,
                             ),
                             child: TwoTextedColumn(
                               padVertical: 10,

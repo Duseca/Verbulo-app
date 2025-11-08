@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:verbulo/view/screens/register_profile/age_group.dart';
-import 'package:verbulo/view/screens/register_profile/gender.dart';
-import 'package:verbulo/view/screens/register_profile/learning_path.dart';
-import 'package:verbulo/view/screens/register_profile/notification_pref.dart';
-import 'package:verbulo/view/screens/register_profile/tell_name.dart';
+import 'package:verbulo/view/screens/auth/register_profile/age_group.dart';
+import 'package:verbulo/view/screens/auth/register_profile/gender.dart';
+import 'package:verbulo/view/screens/auth/register_profile/learning_path.dart';
+import 'package:verbulo/view/screens/auth/register_profile/notification_pref.dart';
+import 'package:verbulo/view/screens/auth/register_profile/tell_name.dart';
 
 class LandingController extends GetxController {
   static LandingController get instance => Get.find<LandingController>();

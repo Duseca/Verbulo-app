@@ -30,10 +30,8 @@ class Quizcard extends StatelessWidget {
           margin: const EdgeInsets.only(bottom: 10),
           padding: const EdgeInsets.all(12),
           decoration: rounded2r(
-            (isweeklyquiz ?? false)
-                ? kSecondaryColor2
-                : getlightBluedarkblue(context),
-            ktransparent,
+            (isweeklyquiz ?? false) ? kSecondaryColor2 : getquaternary(context),
+            ThemeUtils.isDarkMode(context) ? ktransparent : kGrey2Color,
             20,
           ),
           child: Column(
@@ -45,11 +43,12 @@ class Quizcard extends StatelessWidget {
                 leadtextsize: 18,
                 space: 0,
                 hasline: false,
+                leadingcolor: getTertiary(context),
                 title: (isweeklyquiz ?? false) ? 'Weekly Quiz' : 'Daily Quiz',
                 iconcolor: (isweeklyquiz ?? false) ? kSecondaryColor : null,
                 textcolor: (isweeklyquiz ?? false)
                     ? kSecondaryColor
-                    : Colors.white,
+                    : getTertiary(context),
                 trailtext: '12-Aug-2025',
                 hasicon: false,
                 trailIcon: Assets.imagesCalender,
@@ -63,7 +62,7 @@ class Quizcard extends StatelessWidget {
                       size: 16,
                       color: (isweeklyquiz ?? false)
                           ? kSecondaryColor
-                          : Colors.white,
+                          : getTertiary(context),
                       weight: wmedium,
                     ),
                   ),
