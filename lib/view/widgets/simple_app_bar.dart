@@ -15,6 +15,7 @@ AppBar simpleAppBar({
   String? title,
   VoidCallback? onBackIconTap,
   Color? bgColor,
+  Color? titleColor,
   Color? contentColor,
   bool? haveBackButton = true,
   bool? centerTitle,
@@ -28,11 +29,13 @@ AppBar simpleAppBar({
 }) {
   return AppBar(
     bottom: bottom,
+
     toolbarHeight: toolbarheight,
     surfaceTintColor: ktransparent,
     foregroundColor: ktransparent,
     backgroundColor: bgColor ?? ktransparent,
     centerTitle: centerTitle ?? F,
+
     shadowColor: ktransparent,
     leadingWidth: haveBackButton == false ? 0 : 70,
     leading: Column(
@@ -61,7 +64,7 @@ AppBar simpleAppBar({
             size: titlesize ?? 16,
             //    textAlign: centerTitle == true ? TextAlign.center : null,
             weight: FontWeight.w700,
-            color: contentColor ?? getTertiary(Get.context!),
+            color: titleColor ?? getTertiary(Get.context!),
           )
         : Row(
             spacing: 10,
@@ -81,7 +84,7 @@ AppBar simpleAppBar({
                   size: titlesize ?? 16,
                   //    textAlign: centerTitle == true ? TextAlign.center : null,
                   weight: FontWeight.w700,
-                  color: contentColor ?? getTertiary(Get.context!),
+                  color: titleColor ?? getTertiary(Get.context!),
                 ),
               ),
             ],

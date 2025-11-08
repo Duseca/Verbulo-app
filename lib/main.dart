@@ -1,15 +1,20 @@
 import 'dart:io';
 
+import 'package:provider/provider.dart';
 import 'package:verbulo/controller/landing_controller.dart';
 import 'package:verbulo/controller/quiz_controller.dart';
 import 'package:verbulo/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:verbulo/theme/theme_provider.dart';
 import 'package:verbulo/view/screens/launch/splash_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(create: (_) => ThemeProvider(), child: MyApp()),
+  );
+
   Get.put(LandingController());
   Get.put(QuizController());
   SystemChrome.setPreferredOrientations([
@@ -28,13 +33,14 @@ final String dummyImage3 =
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
 
       title: 'VERBULO-APP',
       //theme: lightTheme,
-      theme: lightTheme,
+      theme: themeProvider.themeData,
       themeMode: ThemeMode.system,
 
       ///  themeMode: ThemeMode.light,

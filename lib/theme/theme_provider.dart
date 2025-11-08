@@ -1,27 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:verbulo/theme/light_theme.dart';
+import 'package:verbulo/theme/user_preferences.dart';
 
-class ThemeProvoder with ChangeNotifier {
-  ThemeData _themedata = lightTheme;
-  bool _isDarkMode = false; // Default value for isDarkMode
+class ThemeProvider with ChangeNotifier {
+  ThemeData _themeData = lightTheme;
+  bool _isDarkMode = false;
 
   bool get isDarkMode => _isDarkMode;
-  ThemeData get themeData => _themedata;
-  set themeData(ThemeData themeData) {
-    _themedata = themeData;
+  ThemeData get themeData => _themeData;
+
+  ThemeProvider() {
+    _loadTheme(); // Load saved theme at initialization
+  }
+
+  Future<void> _loadTheme() async {
+    final savedTheme = await UserPreferences.getTheme();
+    if (savedTheme == 'dark') {
+      _themeData = darkTheme;
+      _isDarkMode = true;
+    } else {
+      _themeData = lightTheme;
+      _isDarkMode = false;
+    }
     notifyListeners();
   }
 
-  void toggleTheme() {
-    if (_themedata == lightTheme) {
-      themeData = darkTheme;
-      _isDarkMode = true; // Use = for assignment
-      notifyListeners();
+  void toggleTheme() async {
+    if (_isDarkMode) {
+      _themeData = lightTheme;
+      _isDarkMode = false;
+      await UserPreferences.setTheme('light');
     } else {
-      themeData = lightTheme;
-      _isDarkMode = false; // Use = for assignment
-      notifyListeners();
+      _themeData = darkTheme;
+      _isDarkMode = true;
+      await UserPreferences.setTheme('dark');
     }
+    notifyListeners();
   }
 }
 
